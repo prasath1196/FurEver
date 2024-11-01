@@ -1,5 +1,12 @@
-# FurEver
-### Welcome to FurEver – the online haven built for the community of dog lovers, forever!
+# FurEver  
+### Welcome to FurEver – the online haven built for the community of dog lovers, forever!  
+
+Design Document  
+
+Prasath Rajasekaran  
+Priyanka Somireddi  
+Sahith Bandi  
+Vivek Maddukuri
 
 ## Introduction
 
@@ -12,6 +19,7 @@ Finding the perfect dog breed can be an exciting journey, especially when consid
 - Use our Dog Match Quiz to find a breed that suits your personality and lifestyle, making the adoption process easier and more informed.
 
 ## Brand Logo 
+
 
 ## Integrations
 - Information about dog and dog breeds -  https://registry.dog/api/v1
