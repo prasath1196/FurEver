@@ -13,15 +13,18 @@ Finding the perfect dog breed can be an exciting journey, especially when consid
 
 ## Brand Logo 
 
+## Integrations
+- Information about dog and dog breeds -  https://registry.dog/api/v1
+- Products API - https://www.samsclub.com/api/node/vivaldi/browse/v2/products/search?sourceType=1&limit=45&clubId=&searchTerm=dog+toys&br=true&secondaryResults=2&wmsponsored=1&wmsba=true&banner=true&wmVideo=true
 
 ## Functional Requirements
 
 
 ## Scrum Roles
 
-DevOps/Product Owner/Scrum Master: Vivek 
-Frontend Developer: Prasath, Vivek 
-Integration Developer: Priyanka, Sahith
+- DevOps/Product Owner/Scrum Master: Vivek 
+- Frontend Developer: Prasath, Vivek 
+- Integration Developer: Priyanka, Sahith
 
 ## Weekly Meeting
 
