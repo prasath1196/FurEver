@@ -135,9 +135,9 @@ Finding the perfect dog breed can be an exciting journey, especially when consid
 
 ## Scrum Roles
 
-- DevOps/Product Owner/Scrum Master: Vivek 
-- Frontend Developer: Prasath, Vivek 
-- Integration Developer: Priyanka, Sahith
+- DevOps/Product Owner/Scrum Master: Vivek, Prasath
+- Frontend Developers: Prasath, Priyanka, Sahith
+- Integration Developers: Priyanka, Sahith, Vivek
 
 ## Weekly Meeting
 
