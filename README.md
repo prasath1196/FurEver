@@ -19,6 +19,7 @@ Finding the perfect dog breed can be an exciting journey, especially when consid
 - Use our Dog Match Quiz to find a breed that suits your personality and lifestyle, making the adoption process easier and more informed.
 
 ## Brand Logo 
+![FurEver_BrandLogo](https://github.com/user-attachments/assets/a21f0de7-4f28-4c9c-b1af-5268b002e403)
 
 
 ## Integrations
