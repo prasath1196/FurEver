@@ -19,5 +19,10 @@ Finding the perfect dog breed can be an exciting journey, especially when consid
 
 ## Scrum Roles
 
+DevOps/Product Owner/Scrum Master: Vivek 
+Frontend Developer: Prasath, Vivek 
+Integration Developer: Priyanka, Sahith
 
 ## Weekly Meeting
+
+Every Tuesday at 6.00 p.m.
