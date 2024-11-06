@@ -12,33 +12,42 @@ namespace FurEver.Pages
     {
         public string QuizImageUrl { get; set; }
         public List<string> BreedOptions { get; set; }
-        public string CorrectBreed { get; set; }
         public string AnswerResult { get; set; }
-        public int Score { get; set; }
-        public int CurrentQuestionNumber { get; set; } = 1;
-        public int TotalQuestions { get; set; } = 5;
         public bool QuizFinished { get; set; } = false;
-        public List<string> QuizImages { get; set; } = new List<string>();
+
+        [TempData]
+        public int Score { get; set; }
+
+        [TempData]
+        public int CurrentQuestionNumber { get; set; } = 1;
+
+        [TempData]
+        public string CorrectBreed { get; set; }  // Store correct breed in TempData
+
+        public int TotalQuestions { get; set; } = 5;
 
         private static readonly string[] DogBreeds =
         {
-        "beagle", "bulldog", "dalmatian", "golden retriever", "labrador", "poodle", "pug", "shiba", "husky", "german shepherd"
-    };
+            "beagle", "bulldog", "dalmatian", "goldenretriever", "labrador", "poodle", "pug", "shiba", "husky", "germanshepherd"
+        };
+
+        private static List<string> QuizImages { get; set; } = new List<string>();
 
         public async Task OnGetAsync()
         {
+            // Check if quiz is complete
             if (CurrentQuestionNumber > TotalQuestions)
             {
                 QuizFinished = true;
                 return;
             }
 
+            // Load unique images if not already loaded
             if (!QuizImages.Any())
             {
-                // Load 5 unique images
                 using (var httpClient = new HttpClient())
                 {
-                    for (int i = 0; i < TotalQuestions; i++)
+                    while (QuizImages.Count < TotalQuestions)
                     {
                         var response = await httpClient.GetStringAsync("https://dog.ceo/api/breeds/image/random");
                         var jsonResponse = JObject.Parse(response);
@@ -57,6 +66,7 @@ namespace FurEver.Pages
             {
                 QuizImageUrl = QuizImages[CurrentQuestionNumber - 1];
                 CorrectBreed = QuizImageUrl.Split('/')[4]; // Extract breed from URL
+                TempData["CorrectBreed"] = CorrectBreed;   // Store correct breed in TempData
 
                 // Generate breed options with the correct answer included
                 BreedOptions = DogBreeds.OrderBy(x => System.Guid.NewGuid()).Take(3).ToList();
@@ -70,6 +80,10 @@ namespace FurEver.Pages
 
         public async Task<IActionResult> OnPostAsync(string selectedBreed)
         {
+            // Retrieve correct answer from TempData
+            CorrectBreed = TempData["CorrectBreed"] as string;
+
+            // Check if answer is correct
             if (selectedBreed == CorrectBreed)
             {
                 Score++;
@@ -80,14 +94,18 @@ namespace FurEver.Pages
                 AnswerResult = $"Oops! The correct answer was: {CorrectBreed}.";
             }
 
+            // Move to the next question
             CurrentQuestionNumber++;
+            TempData["CurrentQuestionNumber"] = CurrentQuestionNumber;
+            TempData["Score"] = Score;
+
             if (CurrentQuestionNumber > TotalQuestions)
             {
                 QuizFinished = true;
                 return Page();
             }
 
-            // Call OnGetAsync to load the next question
+            // Load the next question
             await OnGetAsync();
             return Page();
         }
