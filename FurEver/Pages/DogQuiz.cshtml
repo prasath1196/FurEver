@@ -10,35 +10,42 @@
     <meta charset="utf-8" />
     <title>@ViewData["Title"]</title>
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/quiz.css" />
 </head>
 <body>
     <div class="container">
         <h1>Dog Breed Quiz</h1>
+
         @if (Model.QuizFinished)
         {
-            <h2>Your Score: @Model.Score / @Model.TotalQuestions</h2>
-            <a href="/DogQuiz" class="btn">Start Again</a>
+                <h2>Your Score: @Model.Score / @Model.TotalQuestions</h2>
+                <a href="/DogQuiz" class="btn">Start Again</a>
         }
         else if (Model.QuizImageUrl != null)
         {
-            <div class="dog-image">
-                <img src="@Model.QuizImageUrl" alt="Guess the Dog Breed" />
-            </div>
-            <form method="post">
-                <p>Question @Model.CurrentQuestionNumber of @Model.TotalQuestions: Select the breed:</p>
-                @foreach (var option in Model.BreedOptions)
-                {
-                    <div>
-                        <input type="radio" name="selectedBreed" value="@option" required /> @option
+                <div class="dog-image">
+                    <img src="@Model.QuizImageUrl" alt="Guess the Dog Breed" />
+                </div>
+                <form method="post" class="quiz-form">
+                    <p>Question @Model.CurrentQuestionNumber of @Model.TotalQuestions: Select the breed:</p>
+
+                    <div class="options-container">
+                    @foreach (var option in Model.BreedOptions)
+                    {
+                                <label class="option-label">
+                                    <input type="radio" name="selectedBreed" value="@option" required />
+                            @option
+                                </label>
+                    }
                     </div>
-                }
-                <button type="submit" class="btn">Submit Answer</button>
-            </form>
+
+                    <button type="submit" class="btn">Submit Answer</button>
+                </form>
         }
 
         @if (Model.AnswerResult != null)
         {
-            <p class="quiz-result">@Model.AnswerResult</p>
+                <p class="quiz-result">@Model.AnswerResult</p>
         }
     </div>
 </body>
