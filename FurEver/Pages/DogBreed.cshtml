@@ -1,0 +1,36 @@
+﻿@page
+@model FurEver.Pages.DogBreedModel
+@{
+    ViewData["Title"] = "Explore Breeds";
+}
+
+<h1>Explore Dog Breeds</h1>
+
+@if (Model.DogBreeds == null)
+{
+    <p>No breeds found.</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Group</th>
+                <th>Description</th>
+                <th>Popularity</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var breed in Model.DogBreeds)
+            {
+                <tr>
+                    <td>@breed.General.Name</td>
+                    <td>@breed.General.Group</td>
+                    <td>@breed.General.ShortDescription</td>
+                    <td>@breed.General.Popularity</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
