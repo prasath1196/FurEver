@@ -1,0 +1,29 @@
+﻿@page
+@model FurEver.Pages.ReviewPageModel
+@{
+    
+}
+<h2>Dog Breed Review</h2>
+
+<form method="post">
+    <div>
+        <label for="Username">Name:</label>
+        <input type="text" id="Username" name="Username" required />
+    </div><br/>
+    <div>
+        <label for="DogBreed">Dog Breed:</label>
+        <select id="DogBreed" name="DogBreed" required>
+            <option value="">--Select a Breed--</option>
+            @foreach (var breed in Model.DogBreeds)
+            {
+                <option value="@breed">@breed</option>
+            }
+        </select>
+    </div><br />
+    <div>
+        <label for="Comments">Comments:</label>
+        <textarea id="Comments" name="Comments" required></textarea>
+    </div><br/>
+
+    <button type="submit">Submit Review</button>
+</form>
