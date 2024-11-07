@@ -4,6 +4,13 @@
     ViewData["Title"] = "Explore Breeds";
 }
 
+<h1> Search Dog Breeds</h1>
+
+<form method="get">
+    <input type="text" name="searchTerm" placeholder="Enter breed name" value="@Model.SearchTerm" />
+    <button type="submit">Search</button>
+</form>
+
 <h1>Explore Dog Breeds</h1>
 
 @if (Model.DogBreeds == null)

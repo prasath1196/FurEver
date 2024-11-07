@@ -16,6 +16,9 @@ namespace FurEver.Pages
 
         private readonly ILogger<DogBreedModel> _logger;
         public List<DogBreedData> DogBreeds { get; set; } = new List<DogBreedData>();
+
+        [BindProperty(SupportsGet = true)]
+        public string SearchTerm { get; set; } // Property to hold the search term
         public DogBreedModel(IHttpClientFactory httpClientFactory, ILogger<DogBreedModel> logger)
         {
             _httpClient = httpClientFactory.CreateClient();
@@ -36,6 +39,14 @@ namespace FurEver.Pages
 
                 DogBreeds = apiResponse.Data;
                 //DogBreeds = JsonConvert.DeserializeObject<List<DogBreed>>(response);
+
+                // Filter the results based on the search term
+                if (!string.IsNullOrEmpty(SearchTerm))
+                {
+                    DogBreeds = DogBreeds
+                        .Where(breed => breed.General.Name.Contains(SearchTerm, StringComparison.OrdinalIgnoreCase))
+                        .ToList();
+                }
 
                 _logger.LogInformation("Seserialised response: {Response}", DogBreeds);
             }
