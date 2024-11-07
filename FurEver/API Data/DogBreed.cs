@@ -86,6 +86,13 @@ namespace FurEver.API_Data
 
         [JsonProperty("group")]
         public string? Group { get; set; }
+
+
+        [JsonProperty("shortDescription")]
+        public string? ShortDescription { get; set; }
+
+        [JsonProperty("longDescription")]
+        public string? LongDescription { get; set; }
     }
 
     // Images (small/large)

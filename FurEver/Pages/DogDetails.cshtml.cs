@@ -14,14 +14,13 @@ namespace FurEver.Pages
         public string BreedName { get; set; }
 
         [BindProperty(SupportsGet = true)]
-        public Object? DogDetails{ get; set; }
+        public DogBreed? DogDetails{ get; set; }
         public async Task  OnGetAsync()
         {
             var appConstants = Constant.Instace;
             var httpClient = new HttpClient();
             var allDogBreeds = await DogBreedService.FetchBreedsAsync();
             DogDetails = allDogBreeds.Where(row => row?.General?.Name == BreedName).FirstOrDefault();
-            Console.WriteLine(DogDetails);
 
 
         } 
