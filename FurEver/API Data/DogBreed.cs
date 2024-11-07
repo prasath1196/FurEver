@@ -7,9 +7,12 @@ using FurEver.Models;
 
 namespace FurEver.API_Data
 {
+    // Summary
+    // DogBreed Service Class handles the API Call to the external data source and returns the result
+    // ReturnType: DogBreed
     public class DogBreedService
     {
-        // Static Methods
+        // Mapping the API Response to DogBreedsResponse Class
         public static DogBreedsResponse FromJson(string json) => JsonConvert.DeserializeObject<DogBreedsResponse>(json);
 
         public static async Task<List<DogBreed>> FetchBreedsAsync()
@@ -28,28 +31,25 @@ namespace FurEver.API_Data
                     string jsonResponse = await response.Content.ReadAsStringAsync();
                     DogBreedsResponse dogBreedsResponse = FromJson(jsonResponse); // Deserialize into DogBreedsResponse object
 
-                    // Check if data exists and if 'general' is not null
                     if (dogBreedsResponse?.Data != null && dogBreedsResponse?.Data.Count > 0)
                     {
                         Console.WriteLine("Successfully fetched dog breeds.");
-                        return dogBreedsResponse.Data; // Return the full list of DogBreed objects
+                        return dogBreedsResponse.Data;
                     }
                     else
                     {
                         Console.WriteLine("No dog breeds found.");
-                        return new List<DogBreed>(); // Return an empty list if no breeds found
+                        return new List<DogBreed>();
                     }
                 }
                 else
                 {
-                    // Handle the error if the API response is not successful
                     Console.WriteLine($"Error fetching dog breeds: {response.StatusCode}");
                     return new List<DogBreed>(); // Return an empty list on failure
                 }
             }
             catch (Exception ex)
             {
-                // Handle any exceptions during the API call
                 Console.WriteLine($"Exception: {ex.Message}");
                 return new List<DogBreed>(); // Return an empty list on error
             }
@@ -66,7 +66,7 @@ namespace FurEver.API_Data
         public List<DogBreed>? Data { get; set; }
     }
 
-    // DogBreed model should not have a Name property directly
+    // Model for the DogBreed Class. Contains the Details for each Dog Breed
     public class DogBreed
     {
         // General Information (mapped from 'general' key in JSON)

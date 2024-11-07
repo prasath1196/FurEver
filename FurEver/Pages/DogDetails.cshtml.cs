@@ -11,7 +11,7 @@ namespace FurEver.Pages
     {
 
         [BindProperty(SupportsGet = true)]
-        public string BreedName { get; set; }
+        public string? breedName { get; set; }
 
         [BindProperty(SupportsGet = true)]
         public DogBreed? DogDetails{ get; set; }
@@ -20,7 +20,8 @@ namespace FurEver.Pages
             var appConstants = Constant.Instace;
             var httpClient = new HttpClient();
             var allDogBreeds = await DogBreedService.FetchBreedsAsync();
-            DogDetails = allDogBreeds.Where(row => row?.General?.Name == BreedName).FirstOrDefault();
+            DogDetails = allDogBreeds.Where(row => row?.General?.Name == breedName).FirstOrDefault();
+            Console.WriteLine(DogDetails);
 
 
         } 
