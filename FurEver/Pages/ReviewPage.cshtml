@@ -1,29 +1,36 @@
 ﻿@page
 @model FurEver.Pages.ReviewPageModel
 @{
-    
+    ViewData["Title"] = "Review";
 }
-<h2>Dog Breed Review</h2>
+<link rel="stylesheet" href="~/css/ReviewPage.css" />
 
-<form method="post">
-    <div>
-        <label for="Username">Name:</label>
-        <input type="text" id="Username" name="Username" required />
-    </div><br/>
-    <div>
-        <label for="DogBreed">Dog Breed:</label>
-        <select id="DogBreed" name="DogBreed" required>
-            <option value="">--Select a Breed--</option>
-            @foreach (var breed in Model.DogBreeds)
-            {
-                <option value="@breed">@breed</option>
-            }
-        </select>
-    </div><br />
-    <div>
-        <label for="Comments">Comments:</label>
-        <textarea id="Comments" name="Comments" required></textarea>
-    </div><br/>
+    <h2>Share your Story</h2>
 
-    <button type="submit">Submit Review</button>
-</form>
+    <form method="post">
+        <div>
+            <label for="Username">Name:</label>
+            <input type="text" id="Username" name="Username" required />
+        </div>
+        <div>
+            <label for="DogBreed">Dog Breed:</label>
+            <select id="DogBreed" name="DogBreed" required>
+                <option value="">--Select a Breed--</option>
+                @foreach (var breed in Model.DogBreeds)
+                {
+                    <option value="@breed">@breed</option>
+                }
+            </select>
+        </div>
+        <div>
+            <label for="Comments">Story:</label>
+            <textarea id="Comments" name="Comments" required></textarea>
+        </div>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    @if (!string.IsNullOrEmpty(Model.Message))
+    {
+        <div class="alert">@Model.Message</div>
+    }

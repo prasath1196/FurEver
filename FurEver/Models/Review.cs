@@ -10,6 +10,5 @@ namespace FurEver.Models
         [StringLength(30)]
         public string? UserName { get; set; }
         public string? Comments { get; set; }
-        public int Rating { get; set; }
     }
 }
