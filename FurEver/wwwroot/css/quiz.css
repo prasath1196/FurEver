@@ -17,7 +17,8 @@ h1 {
 }
 
     .dog-image img {
-        width: 100%;
+        width: 50%;
+        height: 50%;
         border-radius: 8px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
@@ -34,7 +35,7 @@ h1 {
         color: #555;
         margin-bottom: 15px;
     }
-
+    
 .options-container {
     display: flex;
     flex-direction: column;
@@ -58,6 +59,12 @@ option-label input[type="radio"] {
     margin-top: 20px;
     font-weight: bold;
     color: #28a745;
+}
+
+.quiz-result-wrong {
+    margin-top: 20px;
+    font-weight: bold;
+    color: red; 
 }
 
 .btn {
