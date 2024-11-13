@@ -1,0 +1,59 @@
+﻿@page "{breedName}"
+@model FurEver.Pages.DogDetailsModel
+
+@{
+    var generalInfo = Model.DogDetails?.General;
+    var images = Model.DogDetails?.Images;
+    var indoorImageUrl = images?.Small?.Indoors;
+    var outdoorImageUrl = images?.Large?.Outdoors;
+    var name = generalInfo?.Name;
+    var shortDescription = generalInfo?.ShortDescription;
+    var longDescription = generalInfo?.LongDescription;
+}
+
+
+
+
+    <div class="container">
+        @if (Model.DogDetails != null)
+        {
+            <h1>@name</h1>
+
+            <!-- Image gallery -->
+            <div class="image-gallery">
+                <div>
+                    <h2>Indoor Image</h2>
+                    <img src="@indoorImageUrl" alt="Indoor image of @name" />
+                </div>
+                <div>
+                    <h2>Outdoor Image</h2>
+                    <img src="@outdoorImageUrl" alt="Outdoor image of @name" />
+                </div>
+            </div>
+
+            <!-- General information -->
+            <div class="general-info">
+                <div>
+                    <h2>General Information</h2>
+                    <ul>
+                        <li><strong>Breed:</strong> @generalInfo.Name</li>
+                        <li><strong>Group:</strong> @generalInfo.Group</li>
+                        <li><strong>Short Description:</strong> @shortDescription</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Detailed description -->
+            <div class="description">
+                <h2>More About @generalInfo.Name</h2>
+                <p>@longDescription</p>
+            </div>
+        }
+        else
+        {
+            <div class="error-message">
+                <h1>We don't have information on the breed you are searching for yet!</h1>
+                <p>Sorry, the detail if the breed you requested are not available at this time.</p>
+            </div>
+        }
+    </div>
