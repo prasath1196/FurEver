@@ -5,6 +5,15 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Welcome to FurEver!</h1>
+    <p>Ready to take the Dog Breed Quiz?</p>
+    <!-- Button to start quiz -->
+    <form method="get" asp-page="/DogQuiz">
+        <button type="submit" class="btn btn-primary">Start the Dog Quiz</button>
+    </form>
 </div>
+
+<a class="dogbreed" asp-area="" asp-page="/DogBreed">
+    
+    <div class="menu-item-label">View All Dogs</div>
+</a>
