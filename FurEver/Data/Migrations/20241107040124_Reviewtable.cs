@@ -18,7 +18,7 @@ namespace FurEver.Data.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     DogBreedName = table.Column<string>(type: "varchar(30)", maxLength: 30, nullable: false),
                     UserName = table.Column<string>(type: "varchar(30)", maxLength: 30, nullable: false),
-                    Comments = table.Column<string>(type: "nvarchar(n)", nullable: false)
+                    Comments = table.Column<string>(type: "nvarchar(4000)", nullable: false)
                 },
                 constraints: table =>
                 {
