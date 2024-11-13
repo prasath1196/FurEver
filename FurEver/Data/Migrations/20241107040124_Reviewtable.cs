@@ -16,9 +16,9 @@ namespace FurEver.Data.Migrations
                 {
                     ReviewId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    DogBreedName = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: true),
-                    UserName = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: true),
-                    Comments = table.Column<string>(type: "nvarchar(n)", nullable: true)
+                    DogBreedName = table.Column<string>(type: "varchar(30)", maxLength: 30, nullable: false),
+                    UserName = table.Column<string>(type: "varchar(30)", maxLength: 30, nullable: false),
+                    Comments = table.Column<string>(type: "nvarchar(n)", nullable: false)
                 },
                 constraints: table =>
                 {
