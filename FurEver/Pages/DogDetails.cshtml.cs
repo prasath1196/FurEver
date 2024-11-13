@@ -14,7 +14,7 @@ namespace FurEver.Pages
         public string? breedName { get; set; }
 
         [BindProperty(SupportsGet = true)]
-        public DogBreed? DogDetails{ get; set; }
+        public API_Data.DogBreed DogDetails{ get; set; }
         public async Task  OnGetAsync()
         {
             var appConstants = Constant.Instace;
