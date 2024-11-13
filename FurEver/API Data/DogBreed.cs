@@ -17,14 +17,14 @@ namespace FurEver.API_Data
 
         public static async Task<List<DogBreed>> FetchBreedsAsync()
         {
-            var constants = Constant.Instace;
-            var dogBreedsAPI = constants.DogBReedsAPI;
+            var config = Constant.Instace;
+            var dogBreedsAPI = config.DogBReedsAPI;
 
             var apiClient = new HttpClient();
             try
             {
                 HttpResponseMessage response = await apiClient.GetAsync(dogBreedsAPI);
-                Console.WriteLine(response);
+                Console.WriteLine($"API Response Status: {response.StatusCode}");
 
                 if (response.IsSuccessStatusCode)
                 {

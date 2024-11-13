@@ -11,49 +11,62 @@
     var longDescription = generalInfo?.LongDescription;
 }
 
+<div class="container mt-5">
+    @if (Model.DogDetails != null)
+    {
+        <div class="header d-flex justify-content-between align-items-center mb-4">
+            <h1 class="display-4">@name</h1>
+            <a href="/breeds" class="btn btn-secondary">Back to Breeds</a>
+        </div>
 
-
-
-    <div class="container">
-        @if (Model.DogDetails != null)
-        {
-            <h1>@name</h1>
-
-            <!-- Image gallery -->
-            <div class="image-gallery">
-                <div>
-                    <h2>Indoor Image</h2>
-                    <img src="@indoorImageUrl" alt="Indoor image of @name" />
-                </div>
-                <div>
-                    <h2>Outdoor Image</h2>
-                    <img src="@outdoorImageUrl" alt="Outdoor image of @name" />
-                </div>
+        <!-- Image gallery -->
+        <div class="image-gallery d-flex justify-content-around mb-4">
+            <div class="text-center">
+                <h4>Indoor Image</h4>
+                <img src="@indoorImageUrl" alt="Indoor image of @name" class="rounded shadow-lg" style="max-width: 100%; height: auto;" />
             </div>
+            <div class="text-center">
+                <h4>Outdoor Image</h4>
+                <img src="@outdoorImageUrl" alt="Outdoor image of @name" class="rounded shadow-lg" style="max-width: 100%; height: auto;" />
+            </div>
+        </div>
 
-            <!-- General information -->
-            <div class="general-info">
-                <div>
-                    <h2>General Information</h2>
-                    <ul>
-                        <li><strong>Breed:</strong> @generalInfo.Name</li>
-                        <li><strong>Group:</strong> @generalInfo.Group</li>
-                        <li><strong>Short Description:</strong> @shortDescription</li>
-                    </ul>
-                </div>
-            </div>
+        <!-- General information -->
+        <div class="general-info mb-4 p-4 border rounded shadow-sm">
+            <h2>General Information</h2>
+            <ul class="list-unstyled">
+                <li><strong>Breed:</strong> @generalInfo.Name</li>
+                <li><strong>Group:</strong> @generalInfo.Group</li>
+                <li><strong>Short Description:</strong> @shortDescription</li>
+            </ul>
+        </div>
 
-            <!-- Detailed description -->
-            <div class="description">
-                <h2>More About @generalInfo.Name</h2>
-                <p>@longDescription</p>
-            </div>
-        }
-        else
-        {
-            <div class="error-message">
-                <h1>We don't have information on the breed you are searching for yet!</h1>
-                <p>Sorry, the detail if the breed you requested are not available at this time.</p>
-            </div>
-        }
-    </div>
+        <!-- Detailed description -->
+        <div class="description mb-4 p-4 border rounded shadow-sm">
+            <h2>More About @generalInfo.Name</h2>
+            <p>@longDescription</p>
+        </div>
+    }
+    else
+    {
+        <div class="error-message text-center p-4 border rounded shadow-sm">
+            <h1 class="display-5">We don't have information on the breed you are searching for yet!</h1>
+            <p>Sorry, the details for the breed you requested are not available at this time.</p>
+            <a href="/breeds" class="btn btn-primary mt-3">Back to Breeds</a>
+        </div>
+    }
+</div>
+
+<style>
+    .container {
+        max-width: 800px;
+    }
+
+    .image-gallery img {
+        max-height: 300px;
+    }
+
+    .general-info, .description, .error-message {
+        background-color: #f9f9f9;
+    }
+</style>
