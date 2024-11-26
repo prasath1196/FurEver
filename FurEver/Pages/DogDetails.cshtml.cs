@@ -17,12 +17,8 @@ namespace FurEver.Pages
         public API_Data.DogBreed? DogDetails{ get; set; }
         public async Task  OnGetAsync()
         {
-            var appConstants = Constant.Instace;
-            var httpClient = new HttpClient();
             var allDogBreeds = await DogBreedService.FetchBreedsAsync();
             DogDetails = allDogBreeds.Where(row => row?.General?.Name == breedName).FirstOrDefault();
-            Console.WriteLine(DogDetails);
-
 
         } 
     }
