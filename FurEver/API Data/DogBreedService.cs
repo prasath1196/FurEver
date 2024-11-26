@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using FurEver.Models;
+using FurEver.Pages;
 
 namespace FurEver.API_Data
 {
@@ -73,6 +74,18 @@ namespace FurEver.API_Data
         [JsonProperty("general")]
         public GeneralData? General { get; set; }
 
+        [JsonProperty("physical")]
+        public PhysicalInfo Physical { get; set; }
+
+        [JsonProperty("behavior")]
+        public BehaviorInfo? Behavior { get; set; }
+
+        [JsonProperty("care")]
+        public CareInfo? Care { get; set; }
+
+        [JsonProperty("id")]
+        public string? Id { get; set; }
+
         // Images (mapped from 'images' key in JSON)
         [JsonProperty("images")]
         public DogBreedImages? Images { get; set; }
@@ -82,18 +95,100 @@ namespace FurEver.API_Data
     public class GeneralData
     {
         [JsonProperty("name")]
-        public string? Name { get; set; }
+        public string Name { get; set; }
 
         [JsonProperty("group")]
-        public string? Group { get; set; }
+        public string Group { get; set; }
 
+        [JsonProperty("personalityTraits")]
+        public List<string> PersonalityTraits { get; set; }
 
         [JsonProperty("shortDescription")]
-        public string? ShortDescription { get; set; }
+        public string ShortDescription { get; set; }
 
         [JsonProperty("longDescription")]
-        public string? LongDescription { get; set; }
+        public string LongDescription { get; set; }
+
+        [JsonProperty("popularity")]
+        public int Popularity { get; set; }
+
+        [JsonProperty("height")]
+        public int Height { get; set; }
+
+        [JsonProperty("weight")]
+        public int Weight { get; set; }
+
+        [JsonProperty("lifespan")]
+        public int Lifespan { get; set; }
     }
+
+    public class PhysicalInfo
+    {
+        [JsonProperty("size")]
+        public int Size { get; set; }
+
+        [JsonProperty("lifespan")]
+        public int Lifespan { get; set; }
+
+        [JsonProperty("droolingFrequency")]
+        public int DroolingFrequency { get; set; }
+
+        [JsonProperty("coatStyle")]
+        public string CoatStyle { get; set; }
+
+        [JsonProperty("coatTexture")]
+        public string CoatTexture { get; set; }
+
+        [JsonProperty("coatLength")]
+        public int CoatLength { get; set; }
+
+        [JsonProperty("doubleCoat")]
+        public bool DoubleCoat { get; set; }
+    }
+    public class BehaviorInfo
+    {
+        [JsonProperty("familyAffection")]
+        public int FamilyAffection { get; set; }
+
+        [JsonProperty("childFriendly")]
+        public int ChildFriendly { get; set; }
+
+        [JsonProperty("dogSociability")]
+        public int DogSociability { get; set; }
+
+        [JsonProperty("friendlinessToStrangers")]
+        public int FriendlinessToStrangers { get; set; }
+
+        [JsonProperty("playfulness")]
+        public int Playfulness { get; set; }
+
+        [JsonProperty("protectiveInstincts")]
+        public int ProtectiveInstincts { get; set; }
+
+        [JsonProperty("adaptability")]
+        public int Adaptability { get; set; }
+
+        [JsonProperty("barkingFrequency")]
+        public int BarkingFrequency { get; set; }
+    }
+    public class CareInfo
+    {
+        [JsonProperty("sheddingAmount")]
+        public int SheddingAmount { get; set; }
+
+        [JsonProperty("groomingFrequency")]
+        public int GroomingFrequency { get; set; }
+
+        [JsonProperty("exerciseNeeds")]
+        public int ExerciseNeeds { get; set; }
+
+        [JsonProperty("mentalStimulationNeeds")]
+        public int MentalStimulationNeeds { get; set; }
+
+        [JsonProperty("trainingDifficulty")]
+        public int TrainingDifficulty { get; set; }
+    }
+
 
     // Images (small/large)
     public class DogBreedImages
