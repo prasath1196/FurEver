@@ -1,0 +1,110 @@
+﻿@page
+@model FurEver.Pages.QuizModel
+@{
+    ViewData["Title"] = "Find Your Perfect Dog Breed!";
+}
+
+<h1>Find Your Perfect Dog Breed</h1>
+
+@if (Model.ErrorMessage != null)
+
+{
+    <div class="alert alert-danger">
+        <p>@Model.ErrorMessage</p>
+    </div>
+}
+
+<form method="post">
+    <h3>1. What type of living environment do you have?</h3>
+    <div>
+        <input type="radio" id="apartment" name="LivingEnvironment" value="Apartment" />
+        <label for="apartment">Apartment</label>
+        <input type="radio" id="house" name="LivingEnvironment" value="House" />
+        <label for="house">House</label>
+    </div>
+
+    <h3>2. What is your activity level?</h3>
+    <div>
+        <input type="radio" id="active" name="ActivityLevel" value="Active" />
+        <label for="active">Active</label>
+        <input type="radio" id="moderate" name="ActivityLevel" value="Moderate" />
+        <label for="moderate">Moderate</label>
+        <input type="radio" id="low" name="ActivityLevel" value="Low" />
+        <label for="low">Low</label>
+    </div>
+
+    <h3>3. Do you have children or other pets?</h3>
+    <div>
+        <input type="radio" id="children_pets" name="FamilySituation" value="ChildrenAndPets" />
+        <label for="children_pets">Children and Pets</label>
+        <input type="radio" id="no_children_pets" name="FamilySituation" value="NoChildrenNoPets" />
+        <label for="no_children_pets">No Children or Pets</label>
+    </div>
+
+    <h3>4. How much grooming do you want to do?</h3>
+    <div>
+        <input type="radio" id="low_grooming" name="GroomingPreference" value="Low" />
+        <label for="low_grooming">Low Grooming</label>
+        <input type="radio" id="high_grooming" name="GroomingPreference" value="High" />
+        <label for="high_grooming">High Grooming</label>
+    </div>
+
+    <h3>5. What size dog do you prefer?</h3>
+    <div>
+        <input type="radio" id="small" name="DogSize" value="Small" />
+        <label for="small">Small</label>
+        <input type="radio" id="medium" name="DogSize" value="Medium" />
+        <label for="medium">Medium</label>
+        <input type="radio" id="large" name="DogSize" value="Large" />
+        <label for="large">Large</label>
+    </div>
+
+    <h3>6. How much barking can you tolerate?</h3>
+    <div>
+        <input type="radio" id="low_barking" name="BarkingTolerance" value="Low" />
+        <label for="low_barking">Low</label>
+        <input type="radio" id="moderate_barking" name="BarkingTolerance" value="Moderate" />
+        <label for="moderate_barking">Moderate</label>
+        <input type="radio" id="high_barking" name="BarkingTolerance" value="High" />
+        <label for="high_barking">High</label>
+    </div>
+
+    <h3>7. How much exercise are you willing to provide?</h3>
+    <div>
+        <input type="radio" id="low_exercise" name="ExerciseCommitment" value="Low" />
+        <label for="low_exercise">Low</label>
+        <input type="radio" id="moderate_exercise" name="ExerciseCommitment" value="Moderate" />
+        <label for="moderate_exercise">Moderate</label>
+        <input type="radio" id="high_exercise" name="ExerciseCommitment" value="High" />
+        <label for="high_exercise">High</label>
+    </div>
+
+    <h3>8. What level of training difficulty can you handle?</h3>
+    <div>
+        <input type="radio" id="easy_training" name="TrainingDifficultyPreference" value="Easy" />
+        <label for="easy_training">Easy</label>
+        <input type="radio" id="moderate_training" name="TrainingDifficultyPreference" value="Moderate" />
+        <label for="moderate_training">Moderate</label>
+        <input type="radio" id="challenging_training" name="TrainingDifficultyPreference" value="Challenging" />
+        <label for="challenging_training">Challenging</label>
+    </div>
+
+    <h3>9. What lifespan do you prefer?</h3>
+    <div>
+        <input type="radio" id="short_lifespan" name="LifespanPreference" value="Short" />
+        <label for="short_lifespan">Short (<10 years)</label>
+        <input type="radio" id="average_lifespan" name="LifespanPreference" value="Average" />
+        <label for="average_lifespan">Average (10-15 years)</label>
+        <input type="radio" id="long_lifespan" name="LifespanPreference" value="Long" />
+        <label for="long_lifespan">Long (>15 years)</label>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+@if (Model.RecommendedBreed != null)
+
+{
+    <h3>We Recommend: @Model.RecommendedBreed</h3>
+    <img src="@Model.BreedImage" alt="Recommended Dog Breed" style="max-width: 300px; height: auto;" />
+}
