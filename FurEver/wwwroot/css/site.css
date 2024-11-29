@@ -123,7 +123,8 @@ body {
 
 .dog-info-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+/*    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);*/
+    box-shadow: 0 4px 15px #e0e0e0;
 }
 
 .dog-info-card:hover .tag {
@@ -189,4 +190,30 @@ body {
 
 .read-more:hover {
     background-color: #0056b3;
+}
+
+.shop .card {
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 15px #e0e0e0;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.shop .card-body {
+    flex-grow: 1; /* Ensures the body expands to fill space */
+    min-height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.shop .card img {
+    max-height: 200px; /* Set a max-height for the images */
+    object-fit: cover; /* Ensures images are cropped to fit nicely */
+}
+.shop-button {
+    width: 100%;
+    text-align: center;
+    margin-top: auto;
 }
