@@ -31,8 +31,8 @@ else
         <tbody>
             @foreach (var breed in Model.DogBreeds)
             {
-                <tr>
-                    <td>@breed.General.Name</td>
+                <tr >
+                    <td><a href="/DogDetails/@breed.General.Name">@breed.General.Name</a></td>
                     <td>@breed.General.Group</td>
                     <td>@breed.General.ShortDescription</td>
                     <td>@breed.General.Popularity</td>

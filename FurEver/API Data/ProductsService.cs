@@ -102,12 +102,18 @@ namespace FurEver.API_Data
         [JsonProperty("skuId")]
         public string SkuId { get; set; }
 
-        [JsonProperty("price")]
-        public Price Price { get; set; }
+        [JsonProperty("onlineOffer")]
+        public OnlineOffer OnlineOffer { get; set; }
 
         [JsonProperty("assets")]
         public Asset asset { get; set; }
     }   
+
+    public class OnlineOffer
+    {
+        [JsonProperty("price")]
+        public Price Price { get; set; }
+    }
 
     public class Price
     {
