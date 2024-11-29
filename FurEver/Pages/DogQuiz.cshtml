@@ -41,7 +41,9 @@
 
         @if (Model.AnswerResult != null)
         {
-            <p class="quiz-result">@Model.AnswerResult</p>
+            <p class="@((Model.AnswerResult.Contains("Oops!") ? "quiz-result-wrong" : "quiz-result"))">
+                @Model.AnswerResult
+            </p>
         }
     </div>
 </body>

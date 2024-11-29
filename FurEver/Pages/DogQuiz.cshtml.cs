@@ -24,7 +24,7 @@ namespace FurEver.Pages
         [TempData]
         public string CorrectBreed { get; set; }  // Store correct breed in TempData
 
-        public int TotalQuestions { get; set; } = 5;
+        public readonly int TotalQuestions = 5;
 
         private static readonly string[] DogBreeds =
         {
