@@ -1,0 +1,86 @@
+﻿@page
+@model FurEver.Pages.QuizModel
+@{
+    ViewData["Title"] = "Find Your Perfect Dog Breed!";
+}
+
+<div class="container mt-5">
+    <h1 class="text-center text-primary">Find Your Perfect Dog Breed</h1>
+    <p class="text-center text-muted">Rate your preferences below to discover the ideal breed for you!</p>
+
+    @if (Model.ErrorMessage != null)
+    {
+        <div class="alert alert-danger text-center mt-3">
+            <p>@Model.ErrorMessage</p>
+        </div>
+    }
+
+    <form method="post" class="mt-4 p-4 shadow rounded bg-light">
+        <h3 class="text-secondary mb-4">Rate your preferences from 1 (Low) to 5 (High):</h3>
+        <div class="row g-3">
+            <div class="col-md-6">
+                <label for="friendliness" class="form-label">Friendliness</label>
+                <input type="number" id="friendliness" name="Friendliness" class="form-control" min="1" max="5" required />
+            </div>
+            <div class="col-md-6">
+                <label for="adaptability" class="form-label">Adaptability</label>
+                <input type="number" id="adaptability" name="Adaptability" class="form-control" min="1" max="5" required />
+            </div>
+            <div class="col-md-6">
+                <label for="grooming" class="form-label">Grooming Preference</label>
+                <input type="number" id="grooming" name="GroomingPreference" class="form-control" min="1" max="5" required />
+            </div>
+            <div class="col-md-6">
+                <label for="activity" class="form-label">Activity Level</label>
+                <input type="number" id="activity" name="ActivityLevel" class="form-control" min="1" max="5" required />
+            </div>
+            <div class="col-md-6">
+                <label for="barking" class="form-label">Barking Tolerance</label>
+                <input type="number" id="barking" name="BarkingTolerance" class="form-control" min="1" max="5" required />
+            </div>
+            <div class="col-md-6">
+                <label for="training" class="form-label">Training Difficulty</label>
+                <input type="number" id="training" name="TrainingDifficultyPreference" class="form-control" min="1" max="5" required />
+            </div>
+            <div class="col-md-6">
+                <label for="exercise" class="form-label">Exercise Commitment</label>
+                <input type="number" id="exercise" name="ExerciseCommitment" class="form-control" min="1" max="5" required />
+            </div>
+            <div class="col-md-6">
+                <label for="lifespan" class="form-label">Lifespan Preference</label>
+                <input type="number" id="lifespan" name="LifespanPreference" class="form-control" min="1" max="5" required />
+            </div>
+        </div>
+
+        <div class="text-center mt-4">
+            <button type="submit" class="btn btn-primary btn-lg">Find My Match</button>
+        </div>
+    </form>
+
+    @if (Model.RecommendedBreed != null)
+    {
+        <div class="mt-5 text-center">
+            <h3 class="text-success">We Recommend: <strong>@Model.RecommendedBreed</strong></h3>
+            <img src="@Model.BreedImage" alt="Recommended Dog Breed" class="img-fluid mt-3 rounded" style="max-width: 300px;" />
+        </div>
+    }
+</div>
+
+<style>
+    body {
+        background-color: #f8f9fa; /* Light gray background for a clean look */
+        font-family: 'Arial', sans-serif;
+    }
+
+    h1 {
+        font-weight: bold;
+    }
+
+    .shadow {
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .rounded {
+        border-radius: 10px;
+    }
+</style>

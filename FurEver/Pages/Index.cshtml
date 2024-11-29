@@ -1,19 +1,40 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Home Page";
 }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - FurEver</title>
+    <link rel="stylesheet" href="/css/site.css" />
+</head>
+<div class="index-page">
+    <!-- Main Heading -->
+    <h1 class="main-heading">The best way to find your dream dog</h1>
+    <p class="subheading">
+        Fluffy, friendly, faithful, or all three... Take the dogmatch quiz to find the perfect dog for you.
+    </p>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome to FurEver!</h1>
-    <p>Ready to take the Dog Breed Quiz?</p>
-    <!-- Button to start quiz -->
-    <form method="get" asp-page="/DogQuiz">
-        <button type="submit" class="btn btn-primary">Start the Dog Quiz</button>
-    </form>
+    <!-- Animated Dog GIF -->
+    <div class="dog-animation">
+        <img src="/images/dog-running.gif" alt="Animated dog" class="dog-gif" />
+    </div>
+
+    <!-- Buttons -->
+    <div class="button-container">
+        <a asp-page="/DogQuiz" class="btn btn-primary">Test your knowledge on dog breeds</a>
+        <a asp-page="/DogBreed" class="btn btn-secondary">All dogs</a>
+        <a asp-page="/quizupdated" class="btn btn-secondary">Take the quiz</a>
+    </div>
+
+    <!-- Example Dog Images -->
+    <div class="dog-images">
+        <img src="/images/dog1.jpeg" alt="Dog 1" class="dog-img" />
+        <img src="/images/dog2.jpeg" alt="Dog 2" class="dog-img" />
+        <img src="/images/dog3.jpeg" alt="Dog 3" class="dog-img" />
+    </div>
 </div>
-
-<a class="dogbreed" asp-area="" asp-page="/DogBreed">
-    
-    <div class="menu-item-label">View All Dogs</div>
-</a>
+</html>
