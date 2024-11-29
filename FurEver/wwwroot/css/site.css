@@ -18,7 +18,8 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 60px;
 }
 
 .index-page {
@@ -112,4 +113,200 @@ body {
     }
 }
 
+
+.progress-bar {
+    width: 35%;
+    margin-left: auto;
+    margin-right: auto;
+    height: 100px;
+    border-radius: 50%;
+    background: radial-gradient(closest-side, white 79%, transparent 80% 100%), conic-gradient(#75c2f6 60%, pink 0);
+    position: relative;
+    transition: background 0.5s ease-in-out;
+}
+.rating-title{
+    text-align: center;
+}
+.ratings{
+    margin-top:2em;
+}
+.progress-bar-text {
+    position: absolute; 
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 18px; 
+    font-weight: bold;
+    color: black;
+}
+
+.breed-title {
+    color: #1d5d9b;
+    font-size: 32px;
+    background: #daf0ff;
+    border-radius: 20px;
+    margin-bottom: 1em;
+}
+.breed-title .sub-text{
+    font-size: 18px;
+}
+
+.image-frame{
+    border: 5px solid black;
+    padding: 5px;
+}
+
+.dog-details-container {
+    box-shadow: rgba(0, 0, 0, 0.15) 4px 4px 30px 0px;
+    border-radius: 20px;
+    padding: 50px;
+}
+
+.breed-info-title {
+    color: #daf0ff;
+    font-size: 24px;
+    background: #1d5d9b;
+    border-radius: 20px;
+    margin-bottom: 1em;
+    text-align: center;
+}
+
+.dog-info-container {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 20px; 
+}
+
+.dog-info-card {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    width: 47%;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    background-color: #f7f8fa;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+    .dog-info-card .card-body {
+        padding: 15px;
+    }
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+.icon {
+    font-size: 1.5rem;
+    color: #007bff; 
+}
+
+
+.tag {
+    background-color: #007bff; 
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+
+.dog-info-card:hover {
+    transform: translateY(-5px);
+/*    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);*/
+    box-shadow: 0 4px 15px #e0e0e0;
+}
+
+.dog-info-card:hover .tag {
+    background-color: #0056b3;
+}
+
+.personality-traits-container {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    text-align: center;
+    width: 100%;
+    justify-content: center;
+}
+
+
+.trait-card {
+    background-color: #007bff;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 1rem;
+    display: inline-block;
+
+}
+
+.tag {
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+.description{
+    margin-top: 2em;
+}
+
+.long-description {
+    display: -webkit-box;
+    -webkit-line-clamp: 3; 
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.6em;
+    max-height: 4.8em; 
+}
+
+.long-description.expanded {
+    display: block;
+    -webkit-line-clamp: unset; 
+    max-height: none;
+}
+
+.read-more {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 10px;
+    display: inline-block;
+}
+
+.read-more:hover {
+    background-color: #0056b3;
+}
+
+.shop .card {
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 15px #e0e0e0;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.shop .card-body {
+    flex-grow: 1; /* Ensures the body expands to fill space */
+    min-height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.shop .card img {
+    max-height: 200px; /* Set a max-height for the images */
+    object-fit: cover; /* Ensures images are cropped to fit nicely */
+}
+.shop-button {
+    width: 100%;
+    text-align: center;
+    margin-top: auto;
+}
 

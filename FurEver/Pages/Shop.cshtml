@@ -1,5 +1,53 @@
 ﻿@page
 @model FurEver.Pages.ShopModel
+
 @{
+    Layout = "_Layout"; 
 }
-<h1>Products are listed here</h1>
+
+<div class="container mt-4">
+    <div class="row">
+        @if (Model.ProductList != null && Model.ProductList.Any())
+        {
+            foreach (var product in Model.ProductList)
+            {
+                <div class="col-md-3 mb-4 shop">
+                    <div class="card h-100">
+                        @if (product.ProductDetails != null && product.ProductDetails.Any())
+                        {
+                            <img src="@($"{FurEver.Models.Constant.Instace.ProductsImageRootURL}{product.ProductDetails[0].asset.ImageID}")" class="card-img-top" alt="Product Image">
+                        }
+                        <div class="card-body">
+                            <h5 class="card-title">@product.Descriptors?.Name</h5>
+                            <p class="card-text">@product.Descriptors?.ProductDescription</p>
+                            @if (product.ProductDetails != null && product.ProductDetails.Count > 0)
+                            {
+                                <p class="card-text">Price: $@product.ProductDetails[0].OnlineOffer?.Price?.FinalPrice?.Amount</p>
+                            }
+                            @if (!string.IsNullOrEmpty(product.RedirectDetails?.RedirectUrl))
+                            {
+                                <div class="shop-button">
+                                    <button class="btn btn-primary" onclick="window.open('@($"https://www.samsclub.com{product.RedirectDetails.RedirectUrl}")', '_blank')">Shop</button>
+                                </div>
+                            }
+                            else
+                            {
+                                <span class="text-muted">No link available</span>
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <div class="alert alert-warning">
+                No products available at the moment.
+            </div>
+        }
+    </div>
+</div>
+
+
+
+=
