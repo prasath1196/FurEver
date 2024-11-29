@@ -28,7 +28,7 @@ namespace FurEver.Pages
 
         private static readonly string[] DogBreeds =
         {
-            "beagle", "bulldog", "dalmatian", "goldenretriever", "labrador", "poodle", "pug", "shiba", "husky", "germanshepherd"
+            "Beagle", "Bulldog", "Dalmatian", "Goldenretriever", "Labrador", "Poodle", "Pug", "Shiba", "Husky", "GermanShepherd"
         };
 
         private static List<string> QuizImages { get; set; } = new List<string>();

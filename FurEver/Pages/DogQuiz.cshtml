@@ -4,34 +4,152 @@
     ViewData["Title"] = "Dog Breed Quiz";
 }
 
-
-    <div class="container">
-        <h1>Dog Breed Quiz</h1>
-        @if (Model.QuizFinished)
-        {
-            <h2>Your Score: @Model.Score / @Model.TotalQuestions</h2>
-            <a href="/DogQuiz" class="btn">Start Again</a>
-            <a href="/" class="btn">Back to Home</a>
-        }
-        else if (Model.QuizImageUrl != null)
-        {
-            <div class="dog-image">
-                <img src="@Model.QuizImageUrl" alt="Guess the Dog Breed" />
-            </div>
-            <form method="post">
-                <p>Question @Model.CurrentQuestionNumber of @Model.TotalQuestions: Select the breed:</p>
+<div class="quiz-container">
+    <h1>Dog Breed Quiz</h1>
+    @if (Model.QuizFinished)
+    {
+        <h2>Your Score: @Model.Score / @Model.TotalQuestions</h2>
+        <div class="button-group">
+            <a href="/DogQuiz" class="btn start-again-btn">Start Again</a>
+            <a href="/" class="btn back-home-btn">Back to Home</a>
+        </div>
+    }
+    else if (Model.QuizImageUrl != null)
+    {
+        <div class="dog-image">
+            <img src="@Model.QuizImageUrl" alt="Guess the Dog Breed" />
+        </div>
+        <form method="post" class="quiz-form">
+            <p><strong>Question @Model.CurrentQuestionNumber of @Model.TotalQuestions: Select the breed:</strong></p>
+            <div class="options">
                 @foreach (var option in Model.BreedOptions)
                 {
-                    <div>
-                        <input type="radio" name="selectedBreed" value="@option" required /> @option
+                    <div class="option">
+                        <input type="radio" id="@option" name="selectedBreed" value="@option" required />
+                        <label for="@option">@option</label>
                     </div>
                 }
-                <button type="submit" class="btn">Submit Answer</button>
-            </form>
-        }
+            </div>
+            <button type="submit" class="btn submit-btn">Submit Answer</button>
+        </form>
+    }
 
-        @if (Model.AnswerResult != null)
-        {
-            <p class="quiz-result">@Model.AnswerResult</p>
-        }
-    </div>
+    @if (Model.AnswerResult != null)
+    {
+        <p class="quiz-result @(Model.AnswerResult.Contains("Oops!") ? "error-text" : "success-text")">
+            @Model.AnswerResult
+        </p>
+    }
+</div>
+
+<style>
+    /* General Body Styling */
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f3f4f6;
+        color: #333;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Responsive Quiz Container */
+    .quiz-container {
+        max-width: 600px;
+        margin: 5vh auto;
+        padding: 20px;
+        background: #ffffff;
+        border-radius: 15px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        text-align: center;
+        transition: all 0.3s ease-in-out;
+    }
+
+    /* Title Styling */
+    h1 {
+        font-size: 2rem;
+        color: #4CAF50;
+        margin-bottom: 1rem;
+    }
+
+    /* Dog Image Styling */
+    .dog-image img {
+        width: 100%;
+        max-width: 400px;
+        height: auto;
+        border-radius: 10px;
+        margin: 20px 0;
+    }
+
+    /* Form and Options Styling */
+    .quiz-form {
+        text-align: left;
+        margin-top: 10px;
+    }
+    .options {
+        margin: 10px 0;
+    }
+    .option {
+        margin: 10px 0;
+    }
+    input[type="radio"] {
+        margin-right: 10px;
+    }
+
+    /* Buttons Styling */
+    .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        margin: 10px 5px;
+        text-decoration: none;
+        border: none;
+        border-radius: 5px;
+        font-size: 1rem;
+        cursor: pointer;
+    }
+    .btn.submit-btn {
+        background-color: #007BFF;
+        color: white;
+    }
+    .btn.submit-btn:hover {
+        background-color: #0056b3;
+    }
+    .btn.start-again-btn {
+        background: linear-gradient(90deg, #ff7e5f, #feb47b);
+        color: white;
+    }
+    .btn.start-again-btn:hover {
+        background: linear-gradient(90deg, #feb47b, #ff7e5f);
+    }
+    .btn.back-home-btn {
+        background: linear-gradient(90deg, #6a11cb, #2575fc);
+        color: white;
+    }
+    .btn.back-home-btn:hover {
+        background: linear-gradient(90deg, #2575fc, #6a11cb);
+    }
+
+    /* Result Styling */
+    .quiz-result {
+        font-weight: bold;
+        font-size: 1.2rem;
+        margin-top: 20px;
+    }
+    .quiz-result.success-text {
+        color: #28a745;
+        background: #d4edda;
+        padding: 10px;
+        border-radius: 5px;
+    }
+    .quiz-result.error-text {
+        color: #dc3545;
+        background: #f8d7da;
+        padding: 10px;
+        border-radius: 5px;
+    }
+
+    /* Strong Text Styling */
+    strong {
+        font-weight: bold;
+        font-size: 1.1rem;
+    }
+</style>
