@@ -17,6 +17,8 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
 
 // Register Razor Pages and HttpClient factory
 builder.Services.AddRazorPages();
+builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddHttpClient(); // Add this line to register IHttpClientFactory
 
 var app = builder.Build();
@@ -40,5 +42,10 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapRazorPages();
+
+app.MapControllerRoute(
+    name: "default",
+    pattern:"{controller=Home}/{action=Index}/{id}"
+);
 
 app.Run();
