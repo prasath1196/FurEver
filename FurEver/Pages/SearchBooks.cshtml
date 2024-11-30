@@ -1,0 +1,59 @@
+﻿@page
+@model FurEver.Pages.SearchBooksModel
+@{
+}
+
+<form method="get">
+    <div class="form-group">
+        <label for="searchQuery">Search by Author Name:</label>
+        <input type="text" id="searchQuery" name="searchQuery" class="form-control" placeholder="Enter author name..." value="@Model.SearchQuery" />
+    </div>
+    <button type="submit" class="btn btn-primary">Search</button>
+</form>
+
+@if (Model.BookResults != null && Model.BookResults.Any())
+{
+    <h3>Books by "@Model.SearchQuery":</h3>
+    <ul>
+        @foreach (var book in Model.BookResults)
+        {
+            <li>@book</li>
+        }
+    </ul>
+}
+else if (!string.IsNullOrEmpty(Model.SearchQuery))
+{
+    <p>No books found for "@Model.SearchQuery".</p>
+}
+
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script type="text/javascript">
+    $(function () {
+        let authors = [];
+
+        // Fetch authors from the server when the page loads
+        $.ajax({
+            url: "/api/authors", // Backend endpoint for authors
+            type: "GET",
+            dataType: "json",
+            success: function (data) {
+                authors = data; // Store author names in the array
+            },
+            error: function () {
+                console.error("Error fetching author names");
+            }
+        });
+
+        // Enable autocomplete for the search box
+        $("#searchQuery").autocomplete({
+            source: function (request, response) {
+                const matches = $.grep(authors, function (author) {
+                    return author.toLowerCase().startsWith(request.term.toLowerCase());
+                });
+                response(matches.slice(0, 10)); // Limit to 10 suggestions
+            },
+            minLength: 3 // Minimum 3 characters to show suggestions
+        });
+    });
+</script>
