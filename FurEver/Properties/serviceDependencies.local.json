@@ -3,6 +3,18 @@
     "mssql1": {
       "type": "mssql.local",
       "connectionId": "ConnectionStrings:DefaultConnection"
+    },
+    "mssql2": {
+      "serviceConnectorResourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.ServiceLinker/locations/canadacentral/connectors/ConnectionStringsFurever_16CFF96AFD",
+      "secretStore": "LocalSecretsFile",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/fureverdbserver/databases/FurEver_db",
+      "type": "mssql.azure",
+      "connectionId": "ConnectionStringsFurever",
+      "dynamicId": null
+    },
+    "secrets1": {
+      "type": "secrets.user",
+      "dynamicId": null
     }
   }
 }
