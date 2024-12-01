@@ -47,6 +47,9 @@
     body {
         font-family: 'Arial', sans-serif;
         background-color: #f3f4f6;
+        margin: 0;
+        padding: 0;
+        background-image: url('/images/paws.png');
         color: #333;
         margin: 0;
         padding: 0;
@@ -54,12 +57,12 @@
 
     /* Responsive Quiz Container */
     .quiz-container {
-        max-width: 600px;
+        max-width: 800px;
         margin: 5vh auto;
         padding: 20px;
         background: #ffffff;
         border-radius: 15px;
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 20px 40px rgba(255, 145, 77, 0.4);
         text-align: center;
         transition: all 0.3s ease-in-out;
     }
@@ -67,18 +70,27 @@
     /* Title Styling */
     h1 {
         font-size: 2rem;
-        color: #4CAF50;
+        color: #003f88;
         margin-bottom: 1rem;
     }
 
-    /* Dog Image Styling */
-    .dog-image img {
-        width: 100%;
-        max-width: 400px;
-        height: auto;
-        border-radius: 10px;
-        margin: 20px 0;
+    .dog-image {
+        width: 600px; /* Set a fixed width */
+        height: 450px; /* Set a fixed height */
+        overflow: hidden; /* Hide any part of the image that goes beyond the container */
+        display: flex;
+        justify-content: center; /* Centers the image horizontally */
+        align-items: center; /* Centers the image vertically */
+        border-radius: 8px; /* Optional: gives rounded corners to the container */
     }
+
+        .dog-image img {
+            width: 100%; /* Ensures the image takes up the full width of the container */
+            height: 100%; /* Ensures the image takes up the full height of the container */
+            object-fit: cover; /* Ensures the image covers the entire area, cropping if necessary */
+            border-radius: 8px; /* Optional: matches the rounded corners of the container */
+        }
+
 
     /* Form and Options Styling */
     .quiz-form {
@@ -107,11 +119,11 @@
         cursor: pointer;
     }
     .btn.submit-btn {
-        background-color: #007BFF;
+        background-color: #003f88;
         color: white;
     }
     .btn.submit-btn:hover {
-        background-color: #0056b3;
+        background-color: #ff914d;
     }
     .btn.start-again-btn {
         background: linear-gradient(90deg, #ff7e5f, #feb47b);

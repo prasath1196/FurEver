@@ -16,7 +16,7 @@ namespace FurEver.API_Data
         // Mapping the API Response to DogBreedsResponse Class
         public static DogBreedsResponse FromJson(string json) => JsonConvert.DeserializeObject<DogBreedsResponse>(json);
 
-        public static async Task<List<DogBreed>> FetchBreedsAsync()
+        public static async Task<List<DogBreed>> FetchBreedsAsync(string searchTerm = "")
         {
             var constants = Constant.Instace;
             var dogBreedsAPI = constants.DogBReedsAPI;
@@ -34,8 +34,20 @@ namespace FurEver.API_Data
 
                     if (dogBreedsResponse?.Data != null && dogBreedsResponse?.Data.Count > 0)
                     {
-                        Console.WriteLine("Successfully fetched dog breeds.");
-                        return dogBreedsResponse.Data;
+                        // Console.WriteLine("Successfully fetched dog breeds.");
+                        //return dogBreedsResponse.Data;
+
+                        // If a search term is provided, filter the dog breeds by name
+                        if (!string.IsNullOrWhiteSpace(searchTerm))
+                        {
+                            return dogBreedsResponse.Data
+                                .Where(breed => breed.General.Name.Contains(searchTerm, StringComparison.OrdinalIgnoreCase))
+                                .ToList();
+                        }
+                        else
+                        {
+                            return dogBreedsResponse.Data; // Return all breeds if no search term is given
+                        }
                     }
                     else
                     {
@@ -120,6 +132,7 @@ namespace FurEver.API_Data
 
         [JsonProperty("lifespan")]
         public int Lifespan { get; set; }
+        public string Id { get; internal set; }
     }
 
     public class PhysicalInfo
