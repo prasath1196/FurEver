@@ -37,16 +37,16 @@ namespace FurEver.Pages
                 {
                     // Perform a case-insensitive search for breeds by name
                     DogBreeds = DogBreeds
-                        .Where(breed => breed.General?.Name != null && breed.General.Name.ToLower().Contains(SearchTerm.ToLower()))
+                        .Where(breed => breed.General.Name.Contains(SearchTerm, StringComparison.OrdinalIgnoreCase))
                         .ToList();
                 }
 
-                _logger.LogInformation("Fetched breeds: {Count} breeds found.", DogBreeds?.Count);
+                _logger.LogInformation("Seserialised response: {Response}", DogBreeds);
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error fetching data");
-                DogBreeds = new List<DogBreed>();
+                DogBreeds = new List<API_Data.DogBreed>();
             }
         }
     }
