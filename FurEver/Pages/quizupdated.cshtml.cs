@@ -58,8 +58,14 @@ namespace FurEver.Pages
             if (filteredBreeds.Any())
             {
                 var recommendedBreed = filteredBreeds.First();
-                RecommendedBreed = recommendedBreed.General?.Name;
-                BreedImage = recommendedBreed.Images?.Small?.Studio ?? recommendedBreed.Images?.Large?.Studio ?? "/images/default-dog.png";
+                // RecommendedBreed = recommendedBreed.General?.Name;
+                // BreedImage = recommendedBreed.Images?.Small?.Studio ?? recommendedBreed.Images?.Large?.Studio ?? "/images/default-dog.png";
+                //return RedirectToPage("/DogDetails", new { id = recommendedBreed.Id });
+
+                var recommendedMessage = $"We recommend this breed: {recommendedBreed.General.Name}";
+
+                return RedirectToPage("/DogDetails", new { breedName = recommendedBreed.General.Name, recommendedMessage });
+
             }
             else
             {

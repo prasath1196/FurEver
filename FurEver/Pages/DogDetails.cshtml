@@ -1,6 +1,14 @@
 ﻿@page "{breedName}"
 @model FurEver.Pages.DogDetailsModel
 
+<!-- Display the personalized recommendation message -->
+@if (!string.IsNullOrEmpty(Model.RecommendedMessage))
+{
+    <div class="alert alert-info">
+        <strong>@Model.RecommendedMessage</strong>
+    </div>
+}
+
 @{
     var generalInfo = Model.DogDetails?.General;
     var behaviourInfo = Model.DogDetails?.Behavior;
