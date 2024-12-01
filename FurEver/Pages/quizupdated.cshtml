@@ -4,9 +4,11 @@
     ViewData["Title"] = "Find Your Perfect Dog Breed!";
 }
 
+<link rel="stylesheet" href="~/css/quiz.css" />
+
 <div>
     <h1>Find Your Perfect Dog Breed</h1>
-    <p>Rate your preferences below to discover the ideal breed for you!</p>
+    <h5>Rate your preferences below to discover the ideal breed for you!</h5>
 
     @if (Model.ErrorMessage != null)
     {
@@ -15,47 +17,48 @@
         </div>
     }
 
-    <form method="post" class="mt-4 p-4 shadow rounded bg-light">
-        <h3>Rate your preferences from 1 (Low) to 5 (High):</h3>
-        <div class="row g-3">
-            <div class="col-md-6">
+    <form method="post" class="mt-3 p-3 shadow rounded bg-light" style="font-size: 0.9rem;">
+        <h4 class="text-center">Rate Preferences (1-5):</h4>
+        <div class="row g-2">
+            <div class="col-6">
                 <label for="friendliness" class="form-label">Friendliness</label>
-                <input type="number" id="friendliness" name="Friendliness" class="form-control" min="1" max="5" required />
+                <input type="number" id="friendliness" name="Friendliness" class="form-control form-control-sm" min="1" max="5" required />
             </div>
-            <div class="col-md-6">
+            <div class="col-6">
                 <label for="adaptability" class="form-label">Adaptability</label>
-                <input type="number" id="adaptability" name="Adaptability" class="form-control" min="1" max="5" required />
+                <input type="number" id="adaptability" name="Adaptability" class="form-control form-control-sm" min="1" max="5" required />
             </div>
-            <div class="col-md-6">
-                <label for="grooming" class="form-label">Grooming Preference</label>
-                <input type="number" id="grooming" name="GroomingPreference" class="form-control" min="1" max="5" required />
+            <div class="col-6">
+                <label for="grooming" class="form-label">Grooming</label>
+                <input type="number" id="grooming" name="GroomingPreference" class="form-control form-control-sm" min="1" max="5" required />
             </div>
-            <div class="col-md-6">
+            <div class="col-6">
                 <label for="activity" class="form-label">Activity Level</label>
-                <input type="number" id="activity" name="ActivityLevel" class="form-control" min="1" max="5" required />
+                <input type="number" id="activity" name="ActivityLevel" class="form-control form-control-sm" min="1" max="5" required />
             </div>
-            <div class="col-md-6">
-                <label for="barking" class="form-label">Barking Tolerance</label>
-                <input type="number" id="barking" name="BarkingTolerance" class="form-control" min="1" max="5" required />
+            <div class="col-6">
+                <label for="barking" class="form-label">Barking</label>
+                <input type="number" id="barking" name="BarkingTolerance" class="form-control form-control-sm" min="1" max="5" required />
             </div>
-            <div class="col-md-6">
-                <label for="training" class="form-label">Training Difficulty</label>
-                <input type="number" id="training" name="TrainingDifficultyPreference" class="form-control" min="1" max="5" required />
+            <div class="col-6">
+                <label for="training" class="form-label">Training</label>
+                <input type="number" id="training" name="TrainingDifficultyPreference" class="form-control form-control-sm" min="1" max="5" required />
             </div>
-            <div class="col-md-6">
-                <label for="exercise" class="form-label">Friendliness To Strangers</label>
-                <input type="number" id="exercise" name="FriendlinessToStrangers" class="form-control" min="1" max="5" required />
+            <div class="col-6">
+                <label for="exercise" class="form-label">Stranger Friendliness</label>
+                <input type="number" id="exercise" name="FriendlinessToStrangers" class="form-control form-control-sm" min="1" max="5" required />
             </div>
-            <div class="col-md-6">
-                <label for="lifespan" class="form-label">Lifespan Preference</label>
-                <input type="number" id="lifespan" name="LifespanPreference" class="form-control" min="1" max="5" required />
+            <div class="col-6">
+                <label for="lifespan" class="form-label">Lifespan</label>
+                <input type="number" id="lifespan" name="LifespanPreference" class="form-control form-control-sm" min="1" max="5" required />
             </div>
         </div>
 
-        <div class="text-center mt-4">
-            <button type="submit" class="btn btn-primary btn-lg">Find My Match</button>
+        <div class="text-center mt-3">
+            <button type="submit" class="btn btn-primary btn-sm">Find Match</button>
         </div>
     </form>
+
 
     @if (Model.RecommendedBreed != null)
     {
@@ -66,34 +69,3 @@
     }
 </div>
 
-<style>
-    body {
-        background-color: #f8f9fa; /* Light gray background for a clean look */
-        font-family: 'Arial', sans-serif;
-        margin: 0;
-        padding: 0;
-        background-image: url('/images/paws.png');
-    }
-
-    h1,h3 {
-        text-align: center;
-        font-weight: bold;
-        color: #003f88;
-    }
-
-    p {
-        text-align: center;
-    }
-
-    .shadow {
-        box-shadow: 0 20px 40px rgba(255, 145, 77, 0.4);
-    }
-
-    .rounded {
-        border-radius: 10px;
-    }
-
-    .btn:hover {
-        background-color: #ff914d;
-    }
-</style>
