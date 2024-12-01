@@ -26,7 +26,7 @@ namespace FurEver.Pages
         [BindProperty]
         public int TrainingDifficultyPreference { get; set; }
         [BindProperty]
-        public int ExerciseCommitment { get; set; }
+        public int FriendlinessToStrangers { get; set; }
         [BindProperty]
         public int LifespanPreference { get; set; }
 
@@ -51,7 +51,7 @@ namespace FurEver.Pages
                 (b.Care?.ExerciseNeeds ?? 0) >= ActivityLevel &&
                 (b.Behavior?.BarkingFrequency ?? 0) <= BarkingTolerance &&
                 (b.Care?.TrainingDifficulty ?? 0) <= TrainingDifficultyPreference &&
-                (b.Care?.ExerciseNeeds ?? 0) >= ExerciseCommitment &&
+                (b.Behavior?.FriendlinessToStrangers ?? 0) >= FriendlinessToStrangers &&
                 (b.General?.Lifespan ?? 0) >= LifespanPreference
             ).ToList();
 
