@@ -1,43 +1,53 @@
 ﻿@page
 @model FurEver.Pages.DogBreedModel
 @{
-    ViewData["Title"] = "Explore Breeds";
+    ViewData["Title"] = "Explore Dog Breeds";
 }
 
-<h1> Search Dog Breeds</h1>
+<div class="container my-5">
+    <h1 class="text-center mb-4">Explore Dog Breeds</h1>
 
-<form method="get">
-    <input type="text" name="searchTerm" placeholder="Enter breed name" value="@Model.SearchTerm" />
-    <button type="submit">Search</button>
-</form>
+    <!-- Search Bar Container -->
+    <div class="search-container">
+        <form method="get">
+            <img src="~/images/search.png" class="searchicon" />
+            <input type="text" id="searchTerm" name="SearchTerm" placeholder="Search Dog Breed" value="@Model.SearchTerm" />
+            <button type="submit">Search</button>
+        </form>
+    </div>
 
-<h1>Explore Dog Breeds</h1>
-
-@if (Model.DogBreeds == null)
-{
-    <p>No breeds found.</p>
-}
-else
-{
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Group</th>
-                <th>Description</th>
-                <th>Popularity</th>
-            </tr>
-        </thead>
-        <tbody>
+    @if (Model.DogBreeds == null || !Model.DogBreeds.Any())
+    {
+        <p class="text-center text-muted">No breeds found.</p>
+    }
+    else
+    {
+        <div class="row row-cols-1 row-cols-md-3 g-4">
             @foreach (var breed in Model.DogBreeds)
             {
-                <tr >
-                    <td><a href="/DogDetails/@breed.General.Name">@breed.General.Name</a></td>
-                    <td>@breed.General.Group</td>
-                    <td>@breed.General.ShortDescription</td>
-                    <td>@breed.General.Popularity</td>
-                </tr>
+                <div class="col">
+                    <div class="card h-100 shadow-sm">
+                        <!-- Breed Image -->
+                        <img src="@breed.Images?.Small?.Outdoors" class="card-img-top" alt="@breed.General?.Name" style="height: 300px; object-fit: cover;">
+
+                        <div class="card-body">
+                            <!-- Breed Name -->
+                            <h5 class="card-title">@breed.General?.Name</h5>
+
+                            <!-- Breed Group -->
+                            <p class="text-muted mb-1"><strong>Group:</strong> @breed.General?.Group</p>
+
+                            <!-- Short Description -->
+                            <p class="card-text text-truncate"><strong>Description:</strong> @breed.General?.ShortDescription</p>
+                        </div>
+
+                        <div class="card-footer text-center">
+                            <!-- Link to Details -->
+                            <a href="/DogDetails?breedName=@breed.General?.Name" class="btn btn-primary">View Details</a>
+                        </div>
+                    </div>
+                </div>
             }
-        </tbody>
-    </table>
-}
+        </div>
+    }
+</div>

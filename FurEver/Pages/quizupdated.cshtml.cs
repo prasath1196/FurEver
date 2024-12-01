@@ -26,7 +26,7 @@ namespace FurEver.Pages
         [BindProperty]
         public int TrainingDifficultyPreference { get; set; }
         [BindProperty]
-        public int ExerciseCommitment { get; set; }
+        public int FriendlinessToStrangers { get; set; }
         [BindProperty]
         public int LifespanPreference { get; set; }
 
@@ -47,19 +47,25 @@ namespace FurEver.Pages
             var filteredBreeds = DogBreeds.Where(b =>
                 (b.Behavior?.FamilyAffection ?? 0) >= Friendliness &&
                 (b.Behavior?.Adaptability ?? 0) >= Adaptability &&
-                (b.Physical?.CoatLength ?? 0) <= GroomingPreference &&
+                (b.Care?.GroomingFrequency ?? 0) <= GroomingPreference &&
                 (b.Care?.ExerciseNeeds ?? 0) >= ActivityLevel &&
                 (b.Behavior?.BarkingFrequency ?? 0) <= BarkingTolerance &&
                 (b.Care?.TrainingDifficulty ?? 0) <= TrainingDifficultyPreference &&
-                (b.Care?.ExerciseNeeds ?? 0) >= ExerciseCommitment &&
-                (b.General?.Lifespan ?? 0) >= LifespanPreference
+                (b.Behavior?.FriendlinessToStrangers ?? 0) >= FriendlinessToStrangers &&
+                (b.Physical?.Lifespan ?? 0) >= LifespanPreference
             ).ToList();
 
             if (filteredBreeds.Any())
             {
                 var recommendedBreed = filteredBreeds.First();
-                RecommendedBreed = recommendedBreed.General?.Name;
-                BreedImage = recommendedBreed.Images?.Small?.Studio ?? recommendedBreed.Images?.Large?.Studio ?? "/images/default-dog.png";
+                // RecommendedBreed = recommendedBreed.General?.Name;
+                // BreedImage = recommendedBreed.Images?.Small?.Studio ?? recommendedBreed.Images?.Large?.Studio ?? "/images/default-dog.png";
+                //return RedirectToPage("/DogDetails", new { id = recommendedBreed.Id });
+
+                var recommendedMessage = $"We recommend this breed: {recommendedBreed.General.Name}";
+
+                return RedirectToPage("/DogDetails", new { breedName = recommendedBreed.General.Name, recommendedMessage });
+
             }
             else
             {
