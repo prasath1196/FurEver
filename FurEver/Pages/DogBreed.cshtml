@@ -10,7 +10,7 @@
     <!-- Search Bar Container -->
     <div class="search-container">
         <form method="get">
-            <img src="~/images/search.png" class="searchicon" />
+            <img src="~/images/search.png" alt="search" class="searchicon" />
             <input type="text" id="searchTerm" name="SearchTerm" placeholder="Search Dog Breed" value="@Model.SearchTerm" />
             <button type="submit">Search</button>
         </form>
@@ -28,7 +28,7 @@
                 <div class="col">
                     <div class="card h-100 shadow-sm">
                         <!-- Breed Image -->
-                        <img src="@breed.Images?.Small?.Outdoors" class="card-img-top" alt="@breed.General?.Name" style="height: 300px; object-fit: cover;">
+                        <img src="@breed.Images?.Small?.Outdoors" alt="dog-image" class="card-img-top" alt="@breed.General?.Name" style="height: 300px; object-fit: cover;">
 
                         <div class="card-body">
                             <!-- Breed Name -->
