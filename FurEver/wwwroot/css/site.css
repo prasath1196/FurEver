@@ -396,3 +396,6 @@ body {
     margin-top: auto;
 }
 
+.primary-container {
+    min-height: 100vh;
+}
