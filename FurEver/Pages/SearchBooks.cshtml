@@ -25,35 +25,3 @@ else if (!string.IsNullOrEmpty(Model.SearchQuery))
 {
     <p>No books found for "@Model.SearchQuery".</p>
 }
-
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script type="text/javascript">
-    $(function () {
-        let authors = [];
-
-        // Fetch authors from the server when the page loads
-        $.ajax({
-            url: "/api/authors", // Backend endpoint for authors
-            type: "GET",
-            dataType: "json",
-            success: function (data) {
-                authors = data; // Store author names in the array
-            },
-            error: function () {
-                console.error("Error fetching author names");
-            }
-        });
-
-        // Enable autocomplete for the search box
-        $("#searchQuery").autocomplete({
-            source: function (request, response) {
-                const matches = $.grep(authors, function (author) {
-                    return author.toLowerCase().startsWith(request.term.toLowerCase());
-                });
-                response(matches.slice(0, 10)); // Limit to 10 suggestions
-            },
-            minLength: 3 // Minimum 3 characters to show suggestions
-        });
-    });
-</script>
